@@ -37,7 +37,8 @@ export interface Properties {
 	backgroundColor?: 'black' | 'white',
 	backgroundOpacity?: number,
 	hideThumbnail?: boolean,
-	imagePathError?: string
+	imagePathError?: string,
+	gestureEnable?: boolean,
 }
 
 export const DefaultProperties = {

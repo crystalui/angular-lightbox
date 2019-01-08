@@ -16,13 +16,10 @@ export class LightboxComponent extends LightboxCommonComponent {
     isZoomIn: boolean;
     minTimeout: number = 30;
     preloaderTimeout: number = 100;
-
     spinnerStyles: any = {
         transform: ''
     };
-
     configThumbnailPreloader = true;
-
     events = new EventEmitter();
 
     @HostBinding('class.lightbox-shown') hostShown: boolean = false;
@@ -153,26 +150,22 @@ export class LightboxComponent extends LightboxCommonComponent {
     }
 
     onImageLoaded(){
-        // Навести здесь порядок 
-
-        // Загрузка при открытии
+        // When opening lightbox
         if (this.animationMode === 'zoom-preloader' && 
             this.showState === 'initial-thumbnail-image'){
             this.initialLightboxVirtualImage();
             setTimeout(() => {
                 this.currImageLoadingState = 'uploaded';
                 this.showLightboxAnimation();
-                // Выполнять только при анимации открытия 
                 if (this.properties.hideThumbnail){
                     this.hideThumbnailImage();
                 }
             }, this.minTimeout);
         }
 
-        // Загрузка при перелистывании
+        // When opening next / previous image
         if (this.showState === 'animation-end'){
             this.currImageLoadingState = 'uploaded';
-            // Выполнять только при анимации открытия 
             if (this.properties.hideThumbnail){
                 this.hideThumbnailImage();
             }
@@ -200,7 +193,6 @@ export class LightboxComponent extends LightboxCommonComponent {
         this.setMaxDimensions();
         this.setAnimationDuration();
 
-        // Примечание: что если я получу error позже?
         switch (this.animationMode) {
             case 'zoom-preloader':
                 this.initialLightboxThumbnailImage();
@@ -324,7 +316,7 @@ export class LightboxComponent extends LightboxCommonComponent {
         this.setAnimationDuration();
         // next step: handleLightboxTransitionEnd
 
-        if (this.animationDuration === 0){ // переделать на геттер с преобразованием типа
+        if (this.animationDuration === 0){ // in the future, change to a type conversion getter
             this.closeLightboxAnimationEnd();
         }
     }
@@ -348,7 +340,7 @@ export class LightboxComponent extends LightboxCommonComponent {
             this.showLightboxAnimationEnd();
         }
 
-        // Последний шаг закрытия 
+        // Last close step
         if (this.closingState === 'animation'){
             this.closeLightboxAnimationEnd();
         }
@@ -370,8 +362,6 @@ export class LightboxComponent extends LightboxCommonComponent {
             this.currImageLoadingState = 'loading';
         }
 
-        // Это нужно чтобы небыло мелькания спинера 
-        // дублирование
         setTimeout(() => {
             if (this.currImageLoadingState !== 'uploaded'){
                 this.currImageLoadingState = 'loading';
@@ -395,8 +385,6 @@ export class LightboxComponent extends LightboxCommonComponent {
             this.currImageLoadingState = 'loading';
         }
 
-        // Это нужно чтобы небыло мелькания спинера 
-        // дублирование
         setTimeout(() => {
             if (this.currImageLoadingState !== 'uploaded'){
                 this.currImageLoadingState = 'loading';

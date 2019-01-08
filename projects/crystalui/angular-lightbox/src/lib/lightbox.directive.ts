@@ -13,7 +13,6 @@ export class LightboxDirective {
     image: ImageExtended;
     @Input() fullImage: Image;
     @Input() properties: Properties = {};
-
     @Input() loop: boolean;
     @Input() backgroundOpacity: number;
     @Input() counter: boolean;
@@ -28,6 +27,7 @@ export class LightboxDirective {
     @Input() simpleMode: boolean;
     @Input() backgroundColor: 'black' | 'white';
     @Input() hideThumbnail: boolean;
+    @Input() gestureEnable: boolean;
 
     @Output() events: EventEmitter<any> = new EventEmitter<any>();
 

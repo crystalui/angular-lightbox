@@ -2,6 +2,7 @@ import { Component, Input, HostBinding, ViewChild, ElementRef } from '@angular/c
 import { LightboxData } from './interfaces';
 import { ShowState, ClosingState } from './types';
 import { EventService } from './event.service';
+import { Utils } from './utils';
 
 @Component({
     selector: 'lightbox-common',
@@ -24,7 +25,7 @@ export class LightboxCommonComponent {
     currImageLoadingState: 'not-loaded' | 'loading' | 'uploaded' | 'error' = 'not-loaded';
     isMobile: boolean;
 
-    @Input() lightboxData: any; // LightboxData; Error TS1110 Build: Type expected
+    @Input() lightboxData: LightboxData;
 
     @HostBinding('style.backgroundColor') hostStyleBackgroundColor: string;
     @HostBinding('style.transition') hostStyleTransition: string;
@@ -35,7 +36,7 @@ export class LightboxCommonComponent {
     @ViewChild('lightboxImage') _lightboxImage: ElementRef;
 
     get lightboxImage(){
-        if (this.isMobile){
+        if (this.isMobile && this.properties.gestureEnable){
             const imagePositions = ['_imageFirst', '_imageSecond', '_imageLast'];
             return this[imagePositions[this.indexCurrentSlide]];
         } else {
@@ -81,7 +82,7 @@ export class LightboxCommonComponent {
         return this.thumbnailImage.getBoundingClientRect();
     }
 
-    // Размеры изображения, если оно было бы открыто на весь экран 
+    // Image size if it is larger than the window size
     get virtualImageDimension(){
         let height = this.lightboxImageNaturalHeight;
         let width = height * this.imageAspectRatio;
@@ -204,6 +205,7 @@ export class LightboxCommonComponent {
     }
 
     constructor(public eventService: EventService){
+        this.isMobile = Utils.mobileCheck();
     }
 
     emitState(type, state){
