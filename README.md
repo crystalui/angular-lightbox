@@ -113,7 +113,7 @@ closing-state:animation-end
 ```
 
 ## Browser support
-| name | version |
+| NAME | VERSION |
 |------------------------|-------------------------|
 | Chrome / Chrome for Android | 50+ / Android 4.4+ |
 | FireFox | 48+ |
