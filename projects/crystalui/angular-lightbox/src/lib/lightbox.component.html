@@ -1,0 +1,26 @@
+<div class="lightbox-counter" *ngIf="properties.counter && images.length > 1">{{counter}}</div>
+<div class="lightbox-close" *ngIf="!simpleMode" (click)="closeLightbox()">{{closeButtonText}}</div>
+<div class="lightbox-spinner" 
+	*ngIf="currImageLoadingState === 'loading' && showState === 'animation-end'"></div>
+<div class="lightbox-container" 
+	#lightboxContainer
+	[ngStyle]="containerStyles"
+	(transitionend)="handleLightboxTransitionEnd($event)"
+	(click)="onContainerClick($event)">
+
+	<div class="lightbox-preloader" *ngIf="isPreloader">
+		<div class="lightbox-spinner"></div>
+	</div>
+
+	<div class="lightbox-error" *ngIf="currImageLoadingState === 'error' && !closingState">Failed to load image</div>
+
+	<img class="lightbox-curr-image" 
+		#lightboxImage
+		[src]="currImagePath" 
+		[class.lightbox-show]="currImageLoadingState === 'uploaded'" 
+		(load)="onImageLoaded()"
+		(error)="onImageError($event)" />
+</div>
+
+<div class="lightbox-prev" [hidden]="isHiddenPrevArrow" (click)="prev()"></div>
+<div class="lightbox-next" [hidden]="isHiddenNextArrow" (click)="next()"></div>

@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@crystalui/angular-lightbox": [
+        "dist/crystalui/angular-lightbox"
+      ],
+      "@crystalui/angular-lightbox/*": [
+        "dist/crystalui/angular-lightbox/*"
+      ]
+    }
   }
 }

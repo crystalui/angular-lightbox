@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "@crystalui/angular-lightbox": {
+      "root": "projects/crystalui/angular-lightbox",
+      "sourceRoot": "projects/crystalui/angular-lightbox/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/crystalui/angular-lightbox/tsconfig.lib.json",
+            "project": "projects/crystalui/angular-lightbox/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/crystalui/angular-lightbox/src/test.ts",
+            "tsConfig": "projects/crystalui/angular-lightbox/tsconfig.spec.json",
+            "karmaConfig": "projects/crystalui/angular-lightbox/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/crystalui/angular-lightbox/tsconfig.lib.json",
+              "projects/crystalui/angular-lightbox/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "angularLightbox"

@@ -1,27 +1,121 @@
-# AngularLightbox
+# Lightbox for Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+A simple, responsive lightbox component.
 
-## Development server
+## Demo 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+http://crystalui.org/components/lightbox
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install the npm package.
 
-## Build
+	npm i @crystalui/angular-lightbox
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Import module:
 
-## Running unit tests
+```ts
+import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+    imports: [CrystalLightboxModule]
+})
+```
 
-## Running end-to-end tests
+## Usage
+You can cluster images into group.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```html
+<div lightbox-group>
+    <img src="path_to_image" lightbox [fullImage]="{path: 'path_to_fullimage' }" />
+</div>
+```
 
-## Further help
+Or keep them as separate images.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```html
+<img src="path_to_image" lightbox [fullImage]="{path: 'path_to_fullimage' }" />
+```
+
+You don’t need to specify the path to the large image, it’ll work either way.
+
+```html
+<img src="path_to_image" lightbox />
+```
+
+## Properties
+
+```ts
+imageMaxHeight: string = "100%"
+// Maximum image height.
+
+imageMaxWidth: string = "100%"
+// Maximum image width.
+
+counter: boolean = false
+// Image counter.
+
+counterSeparator: string = "/"
+// The text separator counter.
+
+backgroundColor: "black" | "white" = "black"
+// Background color. Inverts the black and white colors of the controls and the background.
+
+backgroundOpacity: number = "0.85"
+// Lightbox background opacity.
+
+animationDuration: number = "400"
+// Speed of opening and closing animation.
+
+animationTimingFunction: string = "cubic-bezier(0.475, 0.105, 0.445, 0.945)"
+// Smooth opening and closing animation function.
+
+closeButtonText: string = "Close"
+// The Close button text.
+
+hideThumbnail: boolean = true
+// Hide the thumbnail when opening the lightbox.
+
+disable: boolean = false
+// Disable the lightbox.
+```
+
+## Events
+
+```ts
+thumbnail:click
+{type: "thumbnail:click"}
+// Click on the thumbnail.
+
+show-state:initial
+{type: "show-state:initial"}
+// Preparing styles for starting the lightbox display animation and the preloader display.
+
+show-state:animation
+{type: "show-state:animation"}
+// Starting the lightbox display animation.
+
+show-state:animation-end
+{type: "show-state:animation-end"}
+// Ending the lightbox display animation.
+
+closing-state:initial
+{type: "closing-state:initial"}
+// Preparing styles for starting the lightbox closing animation.
+
+closing-state:animation
+{type: "closing-state:animation"}
+// Starting the lightbox closing animation.
+
+closing-state:animation-end
+{type: "closing-state:animation-end"}
+// Ending the lightbox closing animation.
+```
+
+## Browser support
+|------------------------|-------------------------|
+| Chrome / Chrome for Android | 50+ / Android 4.4+ |
+| FireFox | 48+ |
+| Opera | 44+ |
+| Safari / iOS Safari | 10.1, 11.1 / iOS 9+ |
+| Internet Explorer | Edge 15+ |
