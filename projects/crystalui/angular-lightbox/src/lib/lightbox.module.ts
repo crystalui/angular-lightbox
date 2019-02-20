@@ -6,7 +6,6 @@ import { CrystalLightbox } from'./lightbox.service'
 import { EventService } from './event.service';
 import { LightboxDirective } from'./lightbox.directive';
 import { LightboxGroupDirective } from'./lightbox-group.directive';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -16,8 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         LightboxGroupDirective
     ],
     imports: [
-        CommonModule,
-        BrowserAnimationsModule
+        CommonModule
     ],
     exports: [
         LightboxDirective,

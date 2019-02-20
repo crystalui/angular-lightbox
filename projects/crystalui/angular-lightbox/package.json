@@ -1,6 +1,27 @@
 {
   "name": "@crystalui/angular-lightbox",
-  "version": "1.0.1",
+  "version": "1.0.4",
+  "description": "A simple, responsive lightbox component for Angular.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crystalui/angular-lightbox.git"
+  },
+  "author": {
+    "name": "Nikita Drozhzhin",
+    "email": "drozhzhin.n.e@gmail.com"
+  },
+  "keywords": [
+    "Angular",
+    "ng2",
+    "ngx",
+    "lightbox",
+    "overlay images"
+  ],
+  "homepage": "http://crystalui.org/components/lightbox",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/crystalui/angular-lightbox/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0"
