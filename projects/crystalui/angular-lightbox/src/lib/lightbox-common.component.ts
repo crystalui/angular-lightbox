@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding, ViewChild, ElementRef } from '@angular/core';
-import { LightboxData } from './interfaces';
+import { LightboxData, Properties } from './interfaces';
 import { ShowState, ClosingState } from './types';
 import { EventService } from './event.service';
 import { Utils } from './utils';
