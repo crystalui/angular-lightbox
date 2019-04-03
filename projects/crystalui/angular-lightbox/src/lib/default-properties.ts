@@ -14,5 +14,5 @@ export const DefaultProperties = {
 	backgroundColor: 'black',
 	backgroundOpacity: 1,
 	hideThumbnail: true,
-	gestureEnable: true
+	gestureEnable: false
 }

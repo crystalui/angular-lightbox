@@ -10,7 +10,7 @@ http://crystalui.org/components/lightbox
 
 Install the npm package.
 
-	npm i @crystalui/angular-lightbox
+	npm i @crystalui/angular-lightbox --save
 
 Import module:
 

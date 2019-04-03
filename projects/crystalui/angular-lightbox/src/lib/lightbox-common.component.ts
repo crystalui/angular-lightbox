@@ -36,12 +36,7 @@ export class LightboxCommonComponent {
     @ViewChild('lightboxImage') _lightboxImage: ElementRef;
 
     get lightboxImage(){
-        if (this.isMobile && this.properties.gestureEnable){
-            const imagePositions = ['_imageFirst', '_imageSecond', '_imageLast'];
-            return this[imagePositions[this.indexCurrentSlide]];
-        } else {
-            return this._lightboxImage;
-        }
+        return this._lightboxImage;
     }
 
     get lightboxImageElement(){
