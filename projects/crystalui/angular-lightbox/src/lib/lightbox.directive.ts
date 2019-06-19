@@ -76,7 +76,7 @@ export class LightboxDirective {
     }
 
     ngOnChanges(changes) {
-        this.properties = this.getProperties(changes);
+        this.properties = Object.assign({}, this.properties, this.getProperties(changes));
     }
 
     handleGlobalEvents(event){
